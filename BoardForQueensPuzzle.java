@@ -42,9 +42,23 @@ public class BoardForQueensPuzzle {
                      no queen attacked another.
      */
     public boolean lastIsNg() {
-        
-        return true;
-    }
+        for( int rank = 0
+        ; rank < lastRankFilled
+        ; rank++){
+            // if queen attacking up and down, --> true
+          if( filesWithQueens[ rank] == filesWithQueens[ lastRankFilled])
+            return true;
+            // if queen attacking diagonally --> true
+          if( Math.abs( rank - lastRankFilled) // vertical distance
+              ==
+              Math.abs( filesWithQueens[ rank] // horizontal distance
+                      - filesWithQueens[ lastRankFilled])
+            )
+            return true;
+        }
+        return false; // no violations of queens attacking last placed queen
+      }
+
 
 
     /**
@@ -59,7 +73,14 @@ public class BoardForQueensPuzzle {
         This method checks the last-filled rank.
      */
     public boolean accept() {
-        return false;
+      if( filesWithQueens.length == 0)
+        return true;
+      if( lastIsNg() == false
+          &&
+          filesWithQueens.length - 1 == lastRankFilled)
+        return true;
+
+      return false;
     }
 
 
@@ -67,6 +88,8 @@ public class BoardForQueensPuzzle {
       Populate the next rank with a queen in position @file
      */
     public void populate( int file) {
+      lastRankFilled += 1;
+      filesWithQueens[ lastRankFilled] = file;
     }
 
 
@@ -76,6 +99,7 @@ public class BoardForQueensPuzzle {
       @precondition: Some rank(s) have been populated.
      */
     public void depopulate() {
+      lastRankFilled--;
     }
 
 

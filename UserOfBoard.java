@@ -28,26 +28,26 @@ public class UserOfBoard {
         // ----- next incremental step ends here -----
 
 
-        // System.out.println( "an empty size " + b.ranks()
-                          // + " board is acceptable as a solution: "
-                          // + b.accept()
-                          // + " ...expecting false"
-                          // + System.lineSeparator());
-        // // ----- next incremental step ends here -----
+        System.out.println( "an empty size " + b.ranks()
+                          + " board is acceptable as a solution: "
+                          + b.accept()
+                          + " ...expecting false"
+                          + System.lineSeparator());
+        // ----- next incremental step ends here -----
 
 
-        // System.out.println( "queen in top left corner");
-        // b.populate( 0);
-        // System.out.println( b + System.lineSeparator());
-        // // ----- next incremental step ends here -----
+        System.out.println( "queen in top left corner");
+        b.populate( 0);
+        System.out.println( b + System.lineSeparator());
+        // ----- next incremental step ends here -----
 
 
-        // System.out.println( "no solution could start with "
-                          // + "a single-queen board: "
-                          // + b.lastIsNg()
-                          // + " ...expecting false"
-                          // + System.lineSeparator());
-        // // ----- next incremental step ends here -----
+        System.out.println( "no solution could start with "
+                          + "a single-queen board: "
+                          + b.lastIsNg()
+                          + " ...expecting false"
+                          + System.lineSeparator());
+        // ----- next incremental step ends here -----
 
 
         // System.out.println( "Add a queen a knights-move away.");
