@@ -21,7 +21,7 @@ public class BoardForQueensPuzzle {
       Construct an empty instance of the specified size
      */
     public BoardForQueensPuzzle( int ranks) {
-	lastRankFilled = 0;
+	lastRankFilled = -1;
 	filesWithQueens = new int[ ranks];
     }
 
@@ -45,17 +45,20 @@ public class BoardForQueensPuzzle {
         for( int rank = 0
         ; rank < lastRankFilled
         ; rank++){
+	    
             // if queen attacking up and down, --> true
           if( filesWithQueens[ rank] == filesWithQueens[ lastRankFilled])
             return true;
+	  
             // if queen attacking diagonally --> true
-          if( Math.abs( rank - lastRankFilled) // vertical distance
+          else if( Math.abs( rank - lastRankFilled) // vertical distance
               ==
               Math.abs( filesWithQueens[ rank] // horizontal distance
                       - filesWithQueens[ lastRankFilled])
             )
             return true;
         }
+	
         return false; // no violations of queens attacking last placed queen
       }
 
@@ -73,8 +76,6 @@ public class BoardForQueensPuzzle {
         This method checks the last-filled rank.
      */
     public boolean accept() {
-      if( filesWithQueens.length == 0)
-        return true;
       if( lastIsNg() == false
           &&
           filesWithQueens.length - 1 == lastRankFilled)
